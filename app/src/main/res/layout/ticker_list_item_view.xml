@@ -1,51 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@android:color/white"
-    android:padding="8dp"
-    >
-    <TextView
-        android:id="@+id/ticker_list_trading_pair_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        tools:text="DAI-USDT"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/ticker_list_percentage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        tools:text="1.23%"
-        app:layout_constraintLeft_toRightOf="@+id/ticker_list_trading_pair_id"
-        app:layout_constraintTop_toTopOf="@+id/ticker_list_trading_pair_id"
-        app:layout_constraintBottom_toBottomOf="@+id/ticker_list_trading_pair_id"
-        android:layout_marginLeft="8dp"
-        />
-
-    <TextView
-        android:id="@+id/ticker_list_last_trade_price"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="ticker"
+            type="dev.reece.cobinhood.model.TickerItem" />
+    </data>
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ticker_list_trading_pair_id"/>
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:padding="8dp"
+        >
+        <TextView
+            android:id="@+id/ticker_list_trading_pair_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{ticker.name}"
+            android:textSize="18sp"
+            tools:text="DAI-USDT"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
-    <ImageView
-        android:id="@+id/ticker_list_selected"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:src="@drawable/ic_check"/>
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/ticker_list_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{ticker.percentage}"
+            android:textSize="18sp"
+            tools:text="1.23%"
+            app:layout_constraintLeft_toRightOf="@+id/ticker_list_trading_pair_id"
+            app:layout_constraintTop_toTopOf="@+id/ticker_list_trading_pair_id"
+            app:layout_constraintBottom_toBottomOf="@+id/ticker_list_trading_pair_id"
+            android:layout_marginLeft="8dp"
+            />
+
+        <TextView
+            android:id="@+id/ticker_list_last_trade_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(ticker.lastPrice)}"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ticker_list_trading_pair_id"/>
+
+        <ImageView
+            android:id="@+id/ticker_list_selected"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="@{ticker.selected ? View.VISIBLE : View.GONE}"
+            android:src="@drawable/ic_check"/>
+    </android.support.constraint.ConstraintLayout>
+</layout>

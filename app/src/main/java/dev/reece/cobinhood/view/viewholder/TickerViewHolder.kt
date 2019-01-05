@@ -1,4 +1,4 @@
-package dev.reece.cobinhood.viewholder
+package dev.reece.cobinhood.view.viewholder
 
 import android.support.v7.widget.RecyclerView
 import android.view.View

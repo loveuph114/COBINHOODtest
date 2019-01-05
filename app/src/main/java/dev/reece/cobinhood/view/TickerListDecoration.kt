@@ -1,20 +1,21 @@
-package dev.reece.cobinhood
+package dev.reece.cobinhood.view
 
 import android.content.res.Resources
 import android.graphics.Rect
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import dev.reece.cobinhood.viewmodel.MainViewModel
 
 /**
  * Created by reececheng on 2019/1/5.
  */
 class TickerListDecoration : RecyclerView.ItemDecoration() {
-    var viewType : Int = MainActivity.RECYCLER_VIEW_TYPE_LIST
+    var viewType : Int = MainViewModel.RECYCLER_VIEW_TYPE_LIST
 
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State?) {
         var space = pxToDp(8)
 
-        if(viewType == MainActivity.RECYCLER_VIEW_TYPE_GRID) {
+        if(viewType == MainViewModel.RECYCLER_VIEW_TYPE_GRID) {
             var position = parent.getChildAdapterPosition(view)
 
             if(position % 2 == 0) {

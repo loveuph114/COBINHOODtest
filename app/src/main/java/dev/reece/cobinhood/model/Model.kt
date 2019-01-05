@@ -1,4 +1,4 @@
-package dev.reece.cobinhood.data
+package dev.reece.cobinhood.model
 
 import com.google.gson.annotations.SerializedName
 

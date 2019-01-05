@@ -1,4 +1,4 @@
-package dev.reece.cobinhood.data
+package dev.reece.cobinhood.model
 
 import io.reactivex.Observable
 import retrofit2.Retrofit
