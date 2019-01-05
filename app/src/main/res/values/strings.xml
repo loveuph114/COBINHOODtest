@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">COBINHOOD</string>
+    <string name="percentage_format">%.2f\%%</string>
+</resources>
